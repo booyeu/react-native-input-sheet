@@ -6,6 +6,9 @@
 npm install react-native-input-sheet --save
 ```
 
+## Example
+![example](https://github.com/BooYeu/react-native-input-sheet/blob/main/example/example.gif?raw=true)
+
 ## Usage
 
 ```javascript
@@ -36,6 +39,6 @@ const Example = () => {
 | onSubmit        | (text) => {} |    no    | Function that is called when user submits it      |
 | buttonText      |   'submit'   |    no    | The string that is displayed on the submit button |
 | maskStyle       |      -       |    no    | The style of the masker( <View> )                 |
-| containerStyle  |      -       |    no    | The style of the container( <View> )              |
+| style           |      -       |    no    | The style of the container( <View> )              |
 | inputStyle      |      -       |    no    | The style of the textinput( <Text> )              |
 | buttonTextStyle |      -       |    no    | The style of the submit button text( <Text> )     |
