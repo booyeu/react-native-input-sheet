@@ -65,9 +65,10 @@ export type InputSheetType = {
   style?: ViewStyle;
   inputStyle?: TextStyle;
   buttonTextStyle?: TextStyle;
+  autoClearText?: boolean;
 };
 
-export type InputSheetRef = { show: () => void; hide: () => void };
+export type InputSheetRef = { show: () => void; hide: () => void; setValue: (_: string) => void };
 
 const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
   (
@@ -81,6 +82,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
       style,
       inputStyle,
       buttonTextStyle,
+      autoClearText = true,
     },
     ref,
   ) => {
@@ -101,6 +103,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
       if (lastPromise) {
         lastPromise
           .then(() => {
+            autoClearText && setValue('');
             setShow(false);
           })
           .finally(() => {
@@ -110,7 +113,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
         setShow(false);
         setFlag(true);
       }
-    }, [flagRef, onSubmit, setFlag, valueRef, required]);
+    }, [flagRef, onSubmit, setFlag, valueRef, required, autoClearText]);
 
     useEffect(() => {
       if (show) {
@@ -126,6 +129,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
     useImperativeHandle(ref, () => ({
       show: () => setShow(true),
       hide: () => setShow(false),
+      setValue,
     }));
 
     return (
@@ -147,7 +151,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
         >
           <TextInput
             ref={input}
-            style={[styles.input, inputStyle]}
+            style={[styles.input, { backgroundColor: '#eee' }, inputStyle]}
             value={value}
             placeholder={placeholder}
             onChangeText={setValue}
