@@ -18,6 +18,7 @@ import {
   TextInput,
   ViewStyle,
   TextStyle,
+  TextInputProps,
 } from 'react-native';
 import { useStateRef } from 'react-hooks-extension';
 
@@ -28,8 +29,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   container: {
-    paddingVertical: 16,
-    paddingHorizontal: 14,
+    padding: 16,
     position: 'absolute',
     bottom: 0,
     right: 0,
@@ -66,6 +66,8 @@ export type InputSheetType = {
   inputStyle?: TextStyle;
   buttonTextStyle?: TextStyle;
   autoClearText?: boolean;
+  inputProps?: TextInputProps;
+  keyboardVerticalOffset?: number;
 };
 
 export type InputSheetRef = { show: () => void; hide: () => void; setValue: (_: string) => void };
@@ -83,6 +85,8 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
       inputStyle,
       buttonTextStyle,
       autoClearText = true,
+      inputProps,
+      keyboardVerticalOffset = 102,
     },
     ref,
   ) => {
@@ -146,7 +150,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
         <TouchableOpacity activeOpacity={1} onPress={hideMask} style={[styles.mask, maskStyle]} />
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          keyboardVerticalOffset={102}
+          keyboardVerticalOffset={keyboardVerticalOffset}
           style={[styles.container, { backgroundColor: 'white' }, style]}
         >
           <TextInput
@@ -157,6 +161,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
             onChangeText={setValue}
             multiline
             editable={flag}
+            {...(inputProps || {})}
           />
           <Pressable onPress={submit}>
             <Text

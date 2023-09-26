@@ -31,15 +31,17 @@ const Example = () => {
 
 ## Properties
 
-| Prop            |   Default    | Required | Description                                              |
-|:----------------|:------------:|:--------:|:---------------------------------------------------------|
-| defaultValue    |    false     |    no    | the default value of textInput                           |
-| required        |     true     |    no    | Whether the text input value is required                 |
-| placeholder     |      ''      |    no    | The placeholder of the textInput                         |
-| onSubmit        | (text) => {} |    no    | Function that is called when user submits it             |
-| buttonText      |   'submit'   |    no    | The string that is displayed on the submit button        |
-| maskStyle       |      -       |    no    | The style of the masker( <View> )                        |
-| style           |      -       |    no    | The style of the container( <View> )                     |
-| inputStyle      |      -       |    no    | The style of the textInput( <Text> )                     |
-| buttonTextStyle |      -       |    no    | The style of the submit button text( <Text> )            |
-| autoClearText   |     true     |    no    | Whether textInput needs be clear after onSubmit finished |
+| Prop                   |   Default    | Required | Description                                              |
+|:-----------------------|:------------:|:--------:|:---------------------------------------------------------|
+| defaultValue           |    false     |    no    | the default value of textInput                           |
+| required               |     true     |    no    | Whether the text input value is required                 |
+| placeholder            |      ''      |    no    | The placeholder of the textInput                         |
+| onSubmit               | (text) => {} |    no    | Function that is called when user submits it             |
+| buttonText             |   'submit'   |    no    | The string that is displayed on the submit button        |
+| maskStyle              |      -       |    no    | The style of the masker( <View> )                        |
+| style                  |      -       |    no    | The style of the container( <View> )                     |
+| inputStyle             |      -       |    no    | The style of the textInput( <Text> )                     |
+| buttonTextStyle        |      -       |    no    | The style of the submit button text( <Text> )            |
+| autoClearText          |     true     |    no    | Whether textInput needs be clear after onSubmit finished |
+| inputProps             |  undefined   |   n o    | The  props of textInput                                  |
+| keyboardVerticalOffset |     10 2     |    no    | The keyboardVerticalOffset of KeyboardAvoidingView       |
