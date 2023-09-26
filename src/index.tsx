@@ -19,6 +19,7 @@ import {
   ViewStyle,
   TextStyle,
   TextInputProps,
+  StyleProp,
 } from 'react-native';
 import { useStateRef } from 'react-hooks-extension';
 
@@ -61,10 +62,10 @@ export type InputSheetType = {
   placeholder?: string;
   buttonText?: string;
   required?: boolean;
-  maskStyle?: ViewStyle;
-  style?: ViewStyle;
-  inputStyle?: TextStyle;
-  buttonTextStyle?: TextStyle;
+  maskStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
+  inputStyle?: StyleProp<TextStyle>;
+  buttonTextStyle?: StyleProp<TextStyle>;
   autoClearText?: boolean;
   inputProps?: TextInputProps;
   keyboardVerticalOffset?: number;
