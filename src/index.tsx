@@ -105,7 +105,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
       }
       setFlag(false);
       const lastPromise = onSubmit?.(valueRef.current);
-      if (lastPromise) {
+      if (typeof lastPromise?.then === 'function') {
         lastPromise
           .then(() => {
             autoClearText && setValue('');
@@ -115,6 +115,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
             setFlag(true);
           });
       } else {
+        autoClearText && setValue('');
         setShow(false);
         setFlag(true);
       }
