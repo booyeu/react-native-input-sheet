@@ -14,7 +14,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  Modal,
   TextInput,
   ViewStyle,
   TextStyle,
@@ -139,16 +139,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
     }));
 
     return (
-      <View
-        style={[
-          StyleSheet.absoluteFill,
-          {
-            zIndex: 1,
-            display: show ? 'flex' : 'none',
-            position: show ? 'absolute' : 'relative',
-          },
-        ]}
-      >
+      <Modal visible={show} transparent onRequestClose={hideMask}>
         <TouchableOpacity activeOpacity={1} onPress={hideMask} style={[styles.mask, maskStyle]} />
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -181,7 +172,7 @@ const InputSheet = forwardRef<InputSheetRef, InputSheetType>(
             </Text>
           </Pressable>
         </KeyboardAvoidingView>
-      </View>
+      </Modal>
     );
   },
 );

@@ -1,6 +1,6 @@
 {
   "name": "react-native-input-sheet",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple react native input component , allows user inputs something from the sheet come from bottom, just like actionSheet",
   "main": "dist/esm/index.js",
   "types": "dist/index.d.ts",
